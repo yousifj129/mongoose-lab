@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const {createRecipe, getAllRecipes, updateRecipe, deleteRecipe, getRecipeByID} = require("./recipeUtils")
+const dotenv = require("dotenv").config() // allows me to use .env values
 
 async function connectToDB() {
     try {
-        const connection = await mongoose.connect("mongodb+srv://yousif:vD3i5CzNXuwaVNNd@cluster0.ljudaiz.mongodb.net/recipesDB?retryWrites=true&w=majority&appName=Cluster0")
+        const connection = await mongoose.connect(process.env.CONNECTION)
         console.log("Connected to database!")
         return connection;
 
