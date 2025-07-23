@@ -1,5 +1,5 @@
-const Recipe = require("./models/Recipe")
 const mongoose = require('mongoose');
+const {createRecipe, getAllRecipes, updateRecipe, deleteRecipe, getRecipeByID} = require("./recipeUtils")
 
 async function connectToDB() {
     try {
@@ -15,23 +15,6 @@ async function connectToDB() {
 
 
 connectToDB()
-
-async function createRecipe(newRecipe) {
-    try {
-        const createdRecipe = await Recipe.create(newRecipe)
-        console.log(createdRecipe)
-        return createdRecipe
-    }
-    catch {
-        console.log("Failed to create recipe.")
-    }
-
-}
-
-const newRecipe = {
-    name: "Um Ali",
-    ingredients: ["Puff Pastry", "Milk"],
-    instructions: "bake at 180C",
-    prepTime: 120,
-    difficulty: "Medium"
-}
+getAllRecipes()
+// createRecipe(newRecipe)
+// updateRecipe("688079c007e8d74baf9ca90c", newRecipe)
